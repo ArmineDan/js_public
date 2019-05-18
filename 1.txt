@@ -1,0 +1,288 @@
+1. Given a number. Print “odd” if the number is odd and “even” if it’s even.
+
+	function checkNumber(num){
+	  if(num%2){
+		console.log("odd");
+	  }
+	  else{
+		console.log("even");
+	  }
+	}
+	
+	checkNumber(123);
+	checkNumber(35);
+	checkNumber(70);
+	
+2. Given two numbers print 1 if one of them is divisible by the other one, otherwise print 0.
+
+	function isDivisible(num1,num2){
+	  if(num1%num2 === 0){
+		console.log(1);
+	  }
+	  else if(num2%num1 === 0){
+		console.log(1);
+	  }
+	  else{
+		console.log(0);
+	  }
+	}
+	
+	isDivisible(3, 14);
+	isDivisible(18, 2);
+	isDivisible(18, 2);
+
+3. Given number n (positive integer). Print the value of n + nn + nnn(not multiplication).
+
+	function notMultiplication(num){
+	 /* console.log(num.toString()+(num+num)+(num+num+num));  */
+	  console.log(num.toString()+2*num+3*num);
+	}
+
+	notMultiplication(3);
+	notMultiplication(17);
+	notMultiplication(100);
+	
+
+4.	Given a positive integer. Bring the last digit of the number to the beginning.
+ Print the new number. If the last digit of the inserted number is 0, number remains the same.
+
+		function bringToFront(num){
+			let srt,str1,lng;
+			str=num.toString();
+			lng=str.length;
+			  if(str[lng-1]!== '0'){
+				  str1=str[lng-1];
+					for(let i=0; i<lng-1; i++){ 
+						str1+=str[i];
+						}
+			  }
+			  else{
+					str1=str;
+			  }
+			  
+			  console.log(str1)
+			  
+		}
+
+		bringToFront(367);
+		bringToFront(1002);
+		bringToFront(250);
+		bringToFront(8);
+		
+5.	Given five numbers as input. Calculate and print the average of the numbers(without using arrays).
+
+		function getAverage(a,b,c,d,e){  
+			let f=arguments.length;
+			console.log((a+b+c+d+e)/f);  
+		}
+
+		getAverage(45, -12, 0, 3, -15);
+		getAverage(7, 52, -23, 9, -81);
+		
+		
+6.	Given three numbers. Sort them by the ascending order.
+
+
+		function ascendSorting(a,b,c){  
+			let tmp;
+			for(let i=0; i<arguments.length; i++){
+				for (let j=0; j< arguments.length-i-1;j++){
+					if(arguments[j]>arguments[j+1]){
+					  tmp = arguments[j];
+					  arguments[j]=arguments[j+1];
+					  arguments[j+1]=tmp;
+					}
+				}
+			}
+      
+			for(let i=0; i<arguments.length; i++){
+					console.log(arguments[i])
+			}
+	   
+		}
+
+		ascendSorting(45 , 26, 78);
+		ascendSorting(-23, -456, 0);
+		
+		
+7.	Find the sign of product of three numbers without multiplication operator. 
+Display the specified sign.		
+				
+		function findSign(a,b,c){
+		  if(a && b && c){
+			  let lng=arguments.length;
+			  let j=0;			  
+			  for(let i=0; i<lng; i++){
+			  if(arguments[i]<0){
+				  j++;
+				}
+			   }
+			   
+			   if(!(j%2)){
+				  console.log("+");
+				}
+				else{
+				 console.log("-");
+				}
+		  }
+		  else{
+		   console.log("unsigned")
+		  }
+		}
+		
+		findSign(-14, 5, 0);
+		findSign(-8, 9, -6);
+		findSign(4, 19, -2);
+		
+		
+8.	Input three numbers a, b, c respectively, where a is a non zero number and write a
+ program to solve quadratic equations: ax2+ bx+c=0. (Hint: use Math.pow or Math.sqrt).
+ 
+		 
+
+		function solveQuadraticEquation(a, b, c ){
+		  let x1,x2;
+		  if (a!=0){
+		   
+				x1 = (-b-Math.sqrt(Math.pow(b,2)-4*a*c))/(2*a);   
+				x2 = (-b+Math.sqrt(Math.pow(b,2)-4*a*c))/(2*a); 
+				
+				if (!isNaN(x1) && !isNaN(x2)){
+					  if(x1==x2){
+						console.log(`Solution is ${x1}`);
+					  }   
+					  else{
+						console.log(`Solutions are ${x1} and ${x2}`);
+					  }  
+				}
+				else{
+				  console.log('Solution does not exists');
+				} 
+		  }
+		  else {
+			  console.log('Enter valid constans');
+		  } 
+			
+		}
+		 solveQuadraticEquation(1, 2, 1);
+		 solveQuadraticEquation(0, 4, -5);
+		 solveQuadraticEquation(3, -8, 12); 
+		 solveQuadraticEquation(5, -13, 6); 
+		 
+9.	Given the following code rewrite it using only two if operators. (Hint: use logical operators).		
+
+
+			var n=+prompt();
+			var i=0;
+			var j=0;
+
+			if (n % 2 === 0 && !Math.floor(n/10)){   
+					i+=1;
+			}
+
+			if (n % 3 === 0 && n % 10 === 1){  
+					j+=1;  
+			}
+
+
+ 
+		 
+10.	Insert a digit and a number. Check whether the digits contains in the number or not.
+
+		function isContain(a,num){
+		let digit=a.toString();
+		let tmp=num.toString();
+			 if (tmp.includes(digit)){
+			 console.log('Yes');
+			 }
+			 else{
+			 console.log('No');
+			 }
+		}
+
+		isContain(5, 2463);
+		isContain(4, 6);
+		isContain(8, 45689);
+
+				
+11.	Enter a number. Reverse its first and last digits. Print the new number.
+
+		function reverseNumber(a){
+			let last,str,first,middle;
+			if(a>=10){
+			  last=a%10;
+			  str=a.toString();
+			  first=str[0];
+			  middle = str.slice(1,-1);
+			  console.log(+(last+middle+first));
+			}
+			else{
+			  console.log(a);
+			}
+		}
+		reverseNumber(2);
+		reverseNumber(13);
+		reverseNumber(895796);
+		
+		
+12.	Write a program which will compute the area of a rectangular or a triangle after prompting 
+	the user to type the name of the figure name. Also check that entered numbers are positive. 
+	For the triangle entered numbers are height and and base.
+
+	function computeArea(){ 
+		let res = prompt("Please enter the figure name (rectangle or triangle), and two numbers and I'll compute the figure area. For the triangle entered numbers will be height and base. Thanks!");
+	   
+		
+		if(res!==null && res!==""){
+			let tmp=res.split(",");
+
+			   if(tmp[1]>0 && tmp[2]>0 && tmp.length == 3){
+				   switch(tmp[0]){
+					  case 'triangle':
+					  console.log(`Square of the triangle is ${(tmp[1]*tmp[2])/2}`);
+					  break;
+					  case 'rectangle':
+					  console.log(`Square of the rectangle is ${tmp[1]*tmp[2]}`);
+					  break;
+					  default:
+					  console.log("The figure name can be  rectangle or triangle.");   
+				   }
+			   }
+			   else{
+				console.log("Please enter only positive numbers, or some data are missed.");   
+			   }
+			}
+		else{
+		console.log("Please enter data."); 
+		}
+	}
+	computeArea();
+		
+		
+13.	(***) Enter a number. Find the difference between its biggest and smallest digits.
+
+			function f1(a){  
+				let tmp;
+				let str=a.toString();
+				let arr=[];
+				let lng=str.length;
+				 
+				for(let i=0; i<lng; i++){
+				 arr.push(+str[i]);  
+					}
+				  for(let J=0; J<arr.length; J++){ 
+					for(let i=0; i<arr.length-J-1; i++){ 
+						if(arr[i]>arr[i+1]){ 
+						tmp = arr[i]; 
+						arr[i]=arr[i+1];
+						arr[i+1]= tmp;
+						}
+					 }   
+				   } 
+
+					console.log(arr[arr.length-1] - arr[0]);
+			  
+			}
+		f1(5);
+		f1(152);
+		f1(4593653);

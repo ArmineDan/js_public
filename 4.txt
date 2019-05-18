@@ -1,0 +1,149 @@
+1.	Write a function which receives an array and a 
+number as arguments and returns a new array from the
+elements of the given array which are larger than the given number. 
+
+	function larger_than_given_num(arr, num) {
+		if (!Array.isArray(arr)) {
+			return 'The first argument should be the an array';
+		}
+		let result = arr.filter(elem => elem > num);		
+		return result.length ? result : 'Such values do not exist.';
+
+    }
+	
+	
+console.log(larger_than_given_num([10, 25, 16, -5, 30, 15, 24], 16));
+console.log(larger_than_given_num([1, 1, 2, -3, 0, 8, 4, 0], 9));
+
+
+2. 	Write a function, which receives two numbers as arguments and finds all 
+numbers between them such that each digit of the number is even. The numbers
+obtained should be printed in a comma-separated sequence on a  single line.
+
+
+function number_with_even_digits(num1, num2) {
+    if (num1 > num2) {
+        return 'First argument always should be smaller than the second.';
+    }
+    let result = '', tmp, tmp1;
+    for (let i = num1; i <= num2; i++) {
+        tmp = i.toString().split('');
+        tmp1 = tmp.filter(elem => elem % 2 === 0 );
+        if (tmp.length === tmp1.length) {
+            result += tmp.join('') + ',';
+
+        }
+    }
+
+    return result ? result.substring(0, result.length - 1) : 'Such numbers does not exist.';
+
+}
+
+console.log(number_with_even_digits(19, 42));
+console.log(number_with_even_digits(99, 199));
+
+3.	Write a recursive function to determine whether all digits of the number are odd or not.
+		function isAllDigitsOdd(number) {
+
+		if (Math.floor(number / 10) === 0) {
+			return !(number % 2 === 0);
+		}
+    if((number % 10) % 2 !== 0){
+    	return isAllDigitsOdd(Math.floor(number / 10))   
+    }
+    return false
+    
+    
+	
+	}
+
+	console.log(isAllDigitsOdd(4211133));
+	console.log(isAllDigitsOdd(7791));
+	console.log(isAllDigitsOdd(5));
+	
+4. Given an array of numbers. Write a recursive function to find its minimal
+positive element. (if such element does not exist, return -1)
+ 
+ function find_min(arr, min) {
+    if (arr.length === 1 && min === undefined) {      
+      return arr[0]>=0  ? arr[0] :-1;
+	  }  
+     if (arr.length === 1 ) {      
+   
+        return min === undefined  ? -1 : arr[0] < min && arr[0] >= 0? arr[0]: min;
+    }
+    let tmp = arr.shift();
+
+    if ((tmp < min || min === undefined ) && tmp >= 0) {
+        min = tmp;
+    }
+    return find_min(arr, min);
+}
+
+	console.log(find_min([-8]));
+	console.log(find_min([45, -9, 15, 5, 0]));
+	console.log(find_min([-5, -9, -111, -1000, 9]));
+
+
+
+
+		Tarberak 1 (aranc recursia)
+		______________________
+		function rec(arr){
+		let min=arr[0], check=true;
+		for(let i=1; i<arr.length; i++){
+			  if(arr[i]<min && arr[i]>=0 ){       
+				min=arr[i];
+				check=false;
+			  }
+			 
+			} 
+			   return check?-1:min;
+		}
+
+		console.log(rec([56, -9, 87, -23, 0, -105, 55, 1]));
+		console.log(rec([45, -9, 15, 5, -78]));
+		console.log(rec([-5, -9, -111, -1000, -7]));
+
+		Tarberak2 (aranc recursia)
+		__________________
+
+		function rec(arr) {
+			let min;
+			min = arr.reduce((total, elem) => {
+				if (elem < total && elem >= 0) {
+					total = elem;
+				}
+				return total;
+			}, arr[0] >= 0 ? arr[0] : -Infinity);
+
+			return min === -Infinity ? -1 : min;
+		}
+		console.log(rec([56, -9, 87, -23, 0, -105, 55, 1]));
+		console.log(rec([45, -9, 15, 5, -78]));
+		console.log(rec([-5, -9, -111, -1000, -7]));
+
+
+
+5. Given an array of numbers which is almost sorted in ascending order.  
+Find the index where sorting order is violated.
+
+function indexOfNonOrder(arr) {
+    let max = arr[0];
+    for (let i = 1; i < arr.length; i++) {
+        if (arr[i] < max) {
+            return i;
+        }
+        max = arr[i];
+    }
+    return -1;
+
+}
+
+console.log(indexOfNonOrder([2, 12, 15, 48, 64]));
+console.log(indexOfNonOrder([-9, -4, -4, 3, 12, 4, 5]));
+
+
+
+
+
